@@ -22,8 +22,13 @@ This project automates the process of retrieving shipping information from HMM (
 
 ## Installation
 
+1. Clone the repository:
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
+```
 
-1. Create and activate a virtual environment (recommended):
+2. Create and activate a virtual environment (recommended):
 ```bash
 python -m venv venv
 # On Windows
@@ -32,17 +37,17 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-2. Install dependencies:
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Install Playwright browser:
+4. Install Playwright browser:
 ```bash
 playwright install chromium --with-deps --no-shell
 ```
 
-4. Create a `.env` file in the project root and add your Google API key. Get it from https://aistudio.google.com/apikey
+5. Create a `.env` file in the project root and add your Google API key. Get it from https://aistudio.google.com/apikey
 ```bash
 GOOGLE_API_KEY=your_api_key_here
 ```
