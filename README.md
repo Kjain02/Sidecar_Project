@@ -30,11 +30,11 @@ cd Sidecar_Project
 
 2. Create and activate a virtual environment (recommended):
 ```bash
-python -m venv venv
+python -m venv .venv
 # On Windows
-.\venv\Scripts\activate
+.\.venv\Scripts\activate
 # On Unix or MacOS
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 3. Install dependencies:
