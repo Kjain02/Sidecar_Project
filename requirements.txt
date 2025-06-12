@@ -1,0 +1,10 @@
+playwright
+python-dotenv
+langchain
+langchain-google-genai
+browser-use>=0.2.0
+browser-use[memory]
+browser-use[cli]
+
+
+
