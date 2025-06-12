@@ -24,8 +24,8 @@ This project automates the process of retrieving shipping information from HMM (
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/Kjain02/Sidecar_Project.git
+cd Sidecar_Project
 ```
 
 2. Create and activate a virtual environment (recommended):
