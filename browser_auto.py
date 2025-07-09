@@ -19,18 +19,22 @@ import json
 from pathlib import Path
 from dotenv import load_dotenv
 from browser_use import Agent
-from langchain_google_genai import ChatGoogleGenerativeAI
+from browser_use.llm import ChatGoogle
 import platform
 
 # Configure event loop policy for Windows
 if platform.system() == "Windows":
     asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy()) # Use ProactorEventLoop for Windows
 
+
 # Load environment variables from .env file
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
 if not api_key:
     raise RuntimeError("Set GOOGLE_API_KEY in .env")
+
+
+
 
 
 async def anti_detection_hook(agent: Agent):
@@ -123,12 +127,15 @@ async def fetch_hmm(booking_id: str) -> str:
              or "No results found" if tracking fails
     """
     
+
     # Initialize the Gemini model
-    llm = ChatGoogleGenerativeAI(
+    llm = ChatGoogle(
         model="gemini-2.0-flash",
-        google_api_key=api_key
-    )   
-    
+        api_key=api_key
+        # google_api_key=api_key
+    )
+       
+
     steps_file = Path(f"agent_action_steps.json")
     
     try:
@@ -162,8 +169,8 @@ async def fetch_hmm(booking_id: str) -> str:
             Your task:
             Given an HMM booking ID "{booking_id}", retrieve voyage and arrival from HMM Shipping line.
             First, navigate to exactly website: http://www.seacargotracking.net/
-            Scroll to find the link "HYUNDAI Merchant Marine (HMM)"
-            Scroll down to find "Track & Trace" and input the booking ID and search.
+            Scroll down to find and navigate to the link "HYUNDAI Merchant Marine (HMM)" and stay on that link
+            Scroll down to find "Track and Trace" and input the booking ID in the box and search.
             Wait for the results to load or try Refreshing the page only if Blocked by the website.
             Scroll down to find the voyage number and arrival date.
             Only return the Final Answer in the format "Voyage: <voyage_number>, Arrival: <arrival_date>"
